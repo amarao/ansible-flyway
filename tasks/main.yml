@@ -7,10 +7,10 @@
   get_url: url={{flyway_real_url}} dest={{flyway_root}}
 
 - name: Unpacking flyway
-  unarchive: copy=no src={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz dest={{flyway_root}}
+  unarchive: copy=no src={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz dest={{flyway_root}} creates={{flyway_binary}}
 
-- name: removing downloaded copy
-  file: path={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz state=absent
+#- name: removing downloaded copy
+#  file: path={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz state=absent
 
 - name: creating synmink in /usr/bin
   file: src={{flyway_binary}} dest=/usr/bin/flyway state=link
