@@ -14,7 +14,9 @@ Role Variables
 All variables are optional
 
 fly_version: (default: "3.1")
+
 flyway_download_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
+
 flyway_root: (default: /opt/flyway)
 
 
