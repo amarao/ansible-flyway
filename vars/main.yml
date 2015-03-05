@@ -1,0 +1,3 @@
+---
+flyway_real_url: "{{ flyway_download_url | format(flyway_version, flyway_version) }}"
+flyway_binary: "{{flyway_root}}/flyway-{{flyway_version}}/flyway"
