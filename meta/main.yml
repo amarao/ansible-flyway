@@ -1,0 +1,28 @@
+---
+galaxy_info:
+  author: George Shuklin
+  description: Install flyway command line tool from www.flywaydb.org
+  license: BSD
+  min_ansible_version: 1.6
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Centos
+      versions:
+        - all
+    - name: RHEL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: SUSE
+      versions:
+        - all
+  categories:
+    - database
+  dependencies: []
