@@ -14,20 +14,20 @@ Role Variables
 --------------
 All variables are optional
 
-fly_version: (default: "3.1")
-flyway_download_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
-flyway_root: (default: /opt/flyway)
-flyway_config: 
-  database:
-    dbms:  (I didn't test it with mysql or something else, except postgresql)
-    host: db hostname or IP
-    port: 5432
-    name: database name
-    user: username
-    password: password for username
-  schemas: schemas to manage
-flyway_table: flyway table (default schema_history)
-flyway_locations: path to sql migrations
+- fly_version: (default: "3.1")
+- flyway_download_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
+- flyway_root: (default: /opt/flyway)
+- flyway_config: 
+  - database:
+    - dbms:  (I didn't test it with mysql or something else, except postgresql)
+    - host: db hostname or IP
+    - port: 5432
+    - name: database name
+    - user: username
+    - password: password for username
+  - schemas: schemas to manage
+- flyway_table: flyway table (default schema_history)
+- flyway_locations: path to sql migrations
 
 Dependencies
 ------------
