@@ -1,7 +1,7 @@
-{% if flyway.driver %} flyway.driver={{flyway_driver}} {% endif %}
-{% if flyway.url %} flyway.url=jdbc:{{flyway_config.database.dbms}}://{{flyway_config.database.host}}:{{flyway_config.database.port|default(5432)}}/{{flyway_config.database.name}} {% endif %}
-{% if flyway.user %} flyway.user={{flyway_config.database.user}} {% endif %}
+{% if flyway_driver is defined %} flyway.driver={{flyway_driver}} {% endif %}
+flyway.url=jdbc:{{flyway_config.database.dbms}}://{{flyway_config.database.host}}:{{flyway_config.database.port|default(5432)}}/{{flyway_config.database.name}}
+{% if flyway_config.database.user is defined %} flyway.user={{flyway_config.database.user}} {% endif %}
 {% if flyway_config.database.password is defined %} flyway.password={{flyway_config.database.password}} {% endif %}
-{% if flyway_config.schemas %} flyway.schemas={{flyway_config.schemas}} {% endif %}
-{% if flyway.table %} flyway.table={{flyway_table}} {% endif %}
-{% if flyway.locations %} flyway.locations={{flyway_locations}} {% endif %}
+{% if flyway_config.schemas is defined %} flyway.schemas={{flyway_config.schemas}} {% endif %}
+{% if flyway_table is defined %} flyway.table={{flyway_table}} {% endif %}
+{% if flyway_locations is defined %} flyway.locations={{flyway_locations}} {% endif %}

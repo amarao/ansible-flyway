@@ -1,11 +1,7 @@
 ---
-- name: Check if flyway is already installed
-  stat: path=/usr/bin/flyway follow=yes
+- name: Check if flyway installed and not outdated
+  stat: path={{flyway_binary}}
   register: flyway_status
-
-- name: debug
-  debug: msg="{{flyway_status.stat.mode|default(0)}}"
-  when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Creating directory for flyway
   file: path={{flyway_root}} state=directory
@@ -25,13 +21,10 @@
 
 - name: creating synmink in /usr/bin
   file: src={{flyway_binary}} dest=/usr/bin/flyway state=link
-  when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: fixing permissions to binary
   file: path={{flyway_binary}} mode=755 state=file
-  when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Configuring flyway.properties
   template: src=flyway.properties.j2 dest={{flyway_root}}/flyway-{{flyway_version}}/conf/flyway.properties
-  when: flyway_status.stat.mode|default(0) != "0755"
 
