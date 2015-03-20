@@ -1,8 +1,7 @@
 flyway
 =========
 
-Installs and configures flyway commandline tool from http://flywaydb.org/getstarted/download.html to /opt/flyway 
-Ceates symlink from /usr/bin/flyway.
+Installs and configures flyway commandline tool from http://flywaydb.org/getstarted/download.html to /opt/flyway, ceates symlink to proper binary from /usr/bin/flyway.
 
 
 Requirements
@@ -36,8 +35,6 @@ None
 
 Example Playbook
 ----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: javadb
       roles:
