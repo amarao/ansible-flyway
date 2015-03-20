@@ -2,3 +2,14 @@
 flyway_version: "3.1"
 flyway_download_url: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz"
 flyway_root: /opt/flyway
+flyway_driver: org.postgresql.Driver
+flyway_config:
+  database:
+    dbms: postgresql
+    host: localhost
+    port: 5432
+    name: example
+    user: posrgres
+    password: postgres
+  schemas: public
+flyway_table: schema_history

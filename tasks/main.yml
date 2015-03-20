@@ -1,19 +1,37 @@
 ---
-# tasks file for flyway
+- name: Check if flyway is already installed
+  stat: path=/usr/bin/flyway follow=yes
+  register: flyway_status
+
+- name: debug
+  debug: msg="{{flyway_status.stat.mode|default(0)}}"
+  when: flyway_status.stat.mode|default(0) != "0755"
+
 - name: Creating directory for flyway
   file: path={{flyway_root}} state=directory
+  when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Downloading flyway
   get_url: url={{flyway_real_url}} dest={{flyway_root}}
+  when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Unpacking flyway
   unarchive: copy=no src={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz dest={{flyway_root}} creates={{flyway_binary}}
+  when: flyway_status.stat.mode|default(0) != "0755"
 
-#- name: removing downloaded copy
-#  file: path={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz state=absent
+- name: removing downloaded copy
+  file: path={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz state=absent
+  when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: creating synmink in /usr/bin
   file: src={{flyway_binary}} dest=/usr/bin/flyway state=link
+  when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: fixing permissions to binary
-  file: path={{flyway_binary}} mode=766 state=file
+  file: path={{flyway_binary}} mode=755 state=file
+  when: flyway_status.stat.mode|default(0) != "0755"
+
+- name: Configuring flyway.properties
+  template: src=flyway.properties.j2 dest={{flyway_root}}/flyway-{{flyway_version}}/conf/flyway.properties
+  when: flyway_status.stat.mode|default(0) != "0755"
+
