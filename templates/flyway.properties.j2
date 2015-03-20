@@ -9,11 +9,11 @@ flyway.url=jdbc:{{flyway_config.database.dbms}}://{{flyway_config.database.host}
     flyway.password={{flyway_config.database.password}}
 {% endif %}
 {% if flyway_config.schemas is defined -%}
-    flyway.schemas={{flyway_config.schemas}} 
+    flyway.schemas={{flyway_config.schemas}}
 {% endif %}
 {% if flyway_table is defined -%}
-    flyway.table={{flyway_table}} 
+    flyway.table={{flyway_table}}
 {% endif %}
 {% if flyway_locations is defined -%}
-    flyway.locations={{flyway_locations}} 
+    flyway.locations={{flyway_locations}}
 {% endif %}
