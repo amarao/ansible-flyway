@@ -71,6 +71,14 @@ flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/dem
 
 Configuration tested with Oracle XE 11.
 
+Note: you need to copy the driver jar to flyway:
+
+```
+- name: Copy Oracle JDBC driver to machine Flyway folder
+  copy: src=./lib/ojdbc6-11.1.0.7.0.jar dest=/opt/flyway/flyway-{{ flyway_version }}/drivers
+  sudo: yes
+```
+
 License
 -------
 
