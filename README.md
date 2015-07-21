@@ -63,11 +63,13 @@ flyway_config:
     host: localhost
     port: 1521
     name: XE
-    user: GUT
-    password: mdp4gut
-  schemas: GUT
+    user: APP
+    password: appsecret
+  schemas: APP
 flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/demo
 ```
+
+Configuration tested with Oracle XE 11.
 
 License
 -------
