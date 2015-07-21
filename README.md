@@ -66,7 +66,7 @@ flyway_config:
     user: GUT
     password: mdp4gut
   schemas: GUT
-flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/demo,filesystem:/opt/migrations/tomcat
+flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/demo
 ```
 
 License
