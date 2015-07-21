@@ -52,6 +52,22 @@ Example Playbook
             schemas: public, myschema
          - flyway_locations: /opt/migrations/
         
+Example configuration for Oracle
+--------------------------------
+
+```
+flyway_driver: oracle.jdbc.OracleDriver
+flyway_config:
+  database:
+    dbms: oracle
+    host: localhost
+    port: 1521
+    name: XE
+    user: GUT
+    password: mdp4gut
+  schemas: GUT
+flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/demo,filesystem:/opt/migrations/tomcat
+```
 
 License
 -------
