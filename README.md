@@ -1,7 +1,7 @@
 flyway
 =========
 
-Installs and configures flyway commandline tool from http://flywaydb.org/getstarted/download.html to /opt/flyway, ceates symlink to proper binary from /usr/bin/flyway.
+Installs and configures flyway commandline tool from http://flywaydb.org/getstarted/download.html. It installs files to /opt/flyway and creates symlink from /usr/bin/flyway to the binary in the /opt/flyway.
 
 
 Requirements
@@ -13,28 +13,28 @@ Role Variables
 --------------
 All variables are optional
 
-- fly_version: (default: "3.1")
-- flyway_download_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
-- flyway_root: (default: /opt/flyway)
-- flyway_config: 
+- fly\_version: (default: "3.1")
+- flyway\_download\_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
+- flyway\_root: (default: /opt/flyway)
+- flyway\_config: 
   - database:
-    - dbms:  (I didn't test it with mysql or something else, except postgresql)
+    - dbms:  (Tested with postgress and oracle)
     - host: db hostname or IP
     - port: 5432
     - name: database name
     - user: username
     - password: password for username
   - schemas: schemas to manage
-- flyway_table: flyway table (default schema_history)
-- flyway_locations: path to sql migrations
+- flyway\_table: flyway table (default schema\_history)
+- flyway\_locations: path to sql migrations
 
 Dependencies
 ------------
 
 None
 
-Example Playbook
-----------------
+Example Playbook (postgres)
+---------------------------
 
     - hosts: javadb
       roles:
@@ -52,22 +52,25 @@ Example Playbook
             schemas: public, myschema
          - flyway_locations: /opt/migrations/
         
-Example configuration for Oracle
---------------------------------
+Example Playbook (Oracle)
+-------------------------
 
-```
-flyway_driver: oracle.jdbc.OracleDriver
-flyway_config:
-  database:
-    dbms: oracle
-    host: localhost
-    port: 1521
-    name: XE
-    user: APP
-    password: appsecret
-  schemas: APP
-flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/demo
-```
+
+    - hosts: oracledb
+      roles:
+         - { role: flyway }
+      vars:
+        - flyway_driver: oracle.jdbc.OracleDriver
+        - flyway_config:
+           database:
+           dbms: oracle
+           host: localhost
+           port: 1521
+           name: XE
+           user: APP
+           password: appsecret
+           schemas: APP
+        - flyway_locations: filesystem:/opt/migrations/full,filesystem:/opt/migrations/demo
 
 Configuration tested with Oracle XE 11.
 
@@ -87,4 +90,4 @@ BSD
 Author Information
 ------------------
 
-(c) George Shuklin, 2015
+(c) George Shuklin, rastaman 2015
