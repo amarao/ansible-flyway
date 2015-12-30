@@ -25,4 +25,4 @@ galaxy_info:
         - all
   categories:
     - database
-  dependencies: []
+dependencies: []
