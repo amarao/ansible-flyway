@@ -20,11 +20,11 @@
   when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: creating synmink in /usr/bin
-  file: src={{flyway_binary}} dest=/usr/bin/flyway state=link
+  file: src={{flyway_binary}} dest={{flyway_symlink_locaion}}/flyway state=link
 
 - name: fixing permissions to binary
   file: path={{flyway_binary}} mode=755 state=file
 
 - name: Configuring flyway.properties
-  template: src=flyway.properties.j2 dest={{flyway_root}}/flyway-{{flyway_version}}/conf/flyway.properties
+  template: src=flyway.conf.j2 dest={{flyway_root}}/flyway-{{flyway_version}}/conf/flyway.conf
 

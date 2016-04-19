@@ -13,7 +13,7 @@ Role Variables
 --------------
 All variables are optional
 
-- fly\_version: (default: "3.1")
+- fly\_version: (default: "4.0")
 - flyway\_download\_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
 - flyway\_root: (default: /opt/flyway)
 - flyway\_config: 
@@ -27,6 +27,7 @@ All variables are optional
   - schemas: schemas to manage
 - flyway\_table: flyway table (default schema\_history)
 - flyway\_locations: path to sql migrations
+- flyway\_symlink\_location: place for executable symlink (default: /usr/bin)
 
 Dependencies
 ------------
@@ -90,4 +91,4 @@ BSD
 Author Information
 ------------------
 
-(c) George Shuklin, rastaman 2015
+(c) George Shuklin 2015-2016, rastaman 2015
