@@ -26,7 +26,7 @@ All variables are optional
     - password: password for username
   - schemas: schemas to manage
 - flyway\_table: flyway table (default schema\_history)
-- flyway\_locations: path to sql migrations
+- flyway\_locations: path to sql migrations (with 'filesystem:' prefix if needed, see examples)
 - flyway\_symlink\_location: place for executable symlink (default: /usr/bin)
 
 Dependencies
@@ -51,7 +51,7 @@ Example Playbook (postgres)
               user: postgres
               password: postgres
             schemas: public, myschema
-         - flyway_locations: /opt/migrations/
+         - flyway_locations: filesystem:/opt/migrations/
         
 Example Playbook (Oracle)
 -------------------------
