@@ -9,7 +9,7 @@ flyway_config:
     host: localhost
     port: 5432
     name: example
-    user: posrgres
+    user: postgres
     password: postgres
   schemas: public
 flyway_table: schema_history
