@@ -45,7 +45,7 @@ Example Playbook (postgres)
          - flyway_config:
             database: 
               host: localhost
-              port 5432
+              port: 5432
               dbms: postgesql
               name: example
               user: postgres
