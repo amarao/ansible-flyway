@@ -13,7 +13,7 @@ Role Variables
 --------------
 All variables are optional
 
-- fly\_version: (default: "4.0")
+- fly\_version: (default: "4.2.0")
 - flyway\_download\_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
 - flyway\_root: (default: /opt/flyway)
 - flyway\_config: 
@@ -52,6 +52,8 @@ Example Playbook (postgres)
               password: postgres
             schemas: public, myschema
          - flyway_locations: filesystem:/opt/migrations/
+         
+Configuration tested with Postgres 9.2.
         
 Example Playbook (Oracle)
 -------------------------
