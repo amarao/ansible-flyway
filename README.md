@@ -46,7 +46,7 @@ Example Playbook (postgres)
             database: 
               host: localhost
               port: 5432
-              dbms: postgesql
+              dbms: postgresql
               name: example
               user: postgres
               password: postgres
