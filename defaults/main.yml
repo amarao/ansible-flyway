@@ -1,5 +1,5 @@
 ---
-flyway_version: "4.2.0"
+flyway_version: "5.0.1"
 flyway_download_url: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz"
 flyway_root: /opt/flyway
 flyway_symlink_location: /usr/bin

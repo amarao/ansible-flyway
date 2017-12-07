@@ -1,30 +1,28 @@
 ---
-- name: Check if flyway installed and not outdated
-  stat: path={{flyway_binary}}
+- name: Check if flyway is installed and is not outdated
+  stat: path={{flyway_binary}}  # implicitly check version, because flyway_binary contains version
   register: flyway_status
 
-- name: Creating directory for flyway
+- name: Create directory for flyway
   file: path={{flyway_root}} state=directory
-  when: flyway_status.stat.mode|default(0) != "0755"
 
-- name: Downloading flyway
+- name: Download flyway
   get_url: url={{flyway_real_url}} dest={{flyway_root}}
   when: flyway_status.stat.mode|default(0) != "0755"
 
-- name: Unpacking flyway
+- name: Unpack flyway
   unarchive: copy=no src={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz dest={{flyway_root}} creates={{flyway_binary}}
   when: flyway_status.stat.mode|default(0) != "0755"
 
-- name: removing downloaded copy
+- name: Remove downloaded copy
   file: path={{flyway_root}}/flyway-commandline-{{flyway_version}}.tar.gz state=absent
-  when: flyway_status.stat.mode|default(0) != "0755"
 
-- name: creating synmink in /usr/bin
+- name: Create synmink in /usr/bin
   file: src={{flyway_binary}} dest={{flyway_symlink_location}}/flyway state=link
 
-- name: fixing permissions to binary
+- name: Fix permissions to binary
   file: path={{flyway_binary}} mode=755 state=file
 
-- name: Configuring flyway.properties
+- name: Configure flyway.properties
   template: src=flyway.conf.j2 dest={{flyway_root}}/flyway-{{flyway_version}}/conf/flyway.conf
 
