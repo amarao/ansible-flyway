@@ -8,7 +8,7 @@
 
 - name: Download flyway
   vars:
-    usessl: true
+    usessl: false
   get_url: 
     url: "{{flyway_real_url}}" 
     dest: "{{flyway_root}}"
