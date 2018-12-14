@@ -10,7 +10,7 @@
   get_url: 
     url: "{{flyway_real_url}}" 
     dest: "{{flyway_root}}"
-    validate_certs: {{flyway_download_validate_certs}}
+    validate_certs: "{{flyway_download_validate_certs}}"
   when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Unpack flyway
