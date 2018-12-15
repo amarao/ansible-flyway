@@ -15,20 +15,6 @@ galaxy_info:
       versions:
         - Jessie
         - sid
-    - name: Centos
-      versions:
-        - 6
-        - 7
-    - name: RHEL
-      versions:
-        - 6
-        - 7
-    - name: Fedora
-      versions:
-        - 26
-    - name: SUSE
-      versions:
-        - 13
   galaxy_tags:
     - database
 dependencies: []
