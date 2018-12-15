@@ -14,7 +14,10 @@
   when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Unpack flyway
-  unarchive: copy=no src={{ flyway_root }}/flyway-commandline-{{ flyway_version }}.tar.gz dest={{ flyway_root }} creates={{ flyway_binary }}
+  unarchive:
+    copy: no
+    src: '{{ flyway_root }}/flyway-commandline-{{ flyway_version }}.tar.gz'
+    dest: '{{ flyway_root }} creates={{ flyway_binary }}'
   when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Remove downloaded copy
@@ -24,8 +27,7 @@
   file: src={{ flyway_binary }} dest={{ flyway_symlink_location }}/flyway state=link
 
 - name: Fix permissions to binary
-  file: path={{ flyway_binary }} mode=755 state=file
+  file: path={{ flyway_binary }} mode=0755 state=file
 
 - name: Configure flyway.properties
   template: src=flyway.conf.j2 dest={{ flyway_root }}/flyway-{{ flyway_version }}/conf/flyway.conf
-
