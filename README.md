@@ -3,6 +3,8 @@ flyway
 
 Installs and configures flyway commandline tool from http://flywaydb.org/getstarted/download.html. It installs files to /opt/flyway and creates symlink from /usr/bin/flyway to the binary in the /opt/flyway.
 
+Change: now role use ssl by default. Set `flyway_use_ssl: false` to fall back to HTTP.
+
 Requirements
 ------------
 
@@ -13,7 +15,7 @@ Role Variables
 All variables are optional
 
 - fly\_version: (default: "4.2.0")
-- flyway\_download\_url: (default: "http://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
+- flyway\_download\_url: (default: "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/%s/flyway-commandline-%s.tar.gz")
 - flyway\_root: (default: /opt/flyway)
 - flyway\_config: 
   - database:
@@ -27,6 +29,8 @@ All variables are optional
 - flyway\_table: flyway table (default schema\_history)
 - flyway\_locations: path to sql migrations (with 'filesystem:' prefix if needed, see examples)
 - flyway\_symlink\_location: place for executable symlink (default: /usr/bin)
+- flyway\_use\_ssl: Use SSL or not to download binary (default: yes)
+- flyway\_validate\_ssl\_cert: validate or not server SSL certificate at download time (default: yes)
 
 Dependencies
 ------------
@@ -93,4 +97,4 @@ BSD
 Author Information
 ------------------
 
-(c) George Shuklin 2015-2017, rastaman 2015
+(c) George Shuklin 2015-2018, rastaman 2015
