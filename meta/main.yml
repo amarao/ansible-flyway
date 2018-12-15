@@ -7,22 +7,28 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - all
+        - Trusty
+        - Xenial
+        - Bionic
+        - Cosmic
     - name: Debian
       versions:
-        - all
+        - Jessie
+        - sid
     - name: Centos
       versions:
-        - all
+        - 6
+        - 7
     - name: RHEL
       versions:
-        - all
+        - 6
+        - 7
     - name: Fedora
       versions:
-        - all
+        - 26
     - name: SUSE
       versions:
-        - all
+        - 13
   galaxy_tags:
     - database
 dependencies: []
