@@ -17,7 +17,8 @@
   unarchive:
     copy: no
     src: '{{ flyway_root }}/flyway-commandline-{{ flyway_version }}.tar.gz'
-    dest: '{{ flyway_root }} creates={{ flyway_binary }}'
+    dest: '{{ flyway_root }}'
+    creates: '{{ flyway_binary }}'
   when: flyway_status.stat.mode|default(0) != "0755"
 
 - name: Remove downloaded copy
